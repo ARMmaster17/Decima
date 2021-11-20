@@ -1,4 +1,4 @@
-package cmd
+package main
 
 import (
 	"github.com/gorilla/handlers"
@@ -10,13 +10,16 @@ import (
 
 func main() {
 	r := mux.NewRouter()
-	api := r.PathPrefix("/api/").Subrouter()
-	api.HandleFunc("/sources", nil).Methods("GET")
-	r.PathPrefix("/static").Handler(http.FileServer(http.Dir("dist/")))
+	//api := r.PathPrefix("/api/").Subrouter()
+	//api.HandleFunc("/sources", nil).Methods("GET")
+	r.PathPrefix("/js").Handler(http.FileServer(http.Dir("dist/")))
+	r.PathPrefix("/css").Handler(http.FileServer(http.Dir("dist/")))
+	r.Handle("favicon.ico", http.FileServer(http.Dir("dist/")))
 	r.PathPrefix("/").HandlerFunc(IndexHandler("dist/index.html"))
 
 	srv := &http.Server{
 		Handler: handlers.LoggingHandler(os.Stdout, r),
+		Addr: ":8080",
 	}
 	log.Fatal(srv.ListenAndServe())
 }

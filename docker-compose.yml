@@ -1,0 +1,7 @@
+version: '3.3'
+services:
+  decima:
+    build: .
+    restart: always
+    ports:
+      - 8080:8080
