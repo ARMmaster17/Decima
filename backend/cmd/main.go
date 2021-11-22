@@ -10,8 +10,7 @@ import (
 
 func main() {
 	r := mux.NewRouter()
-	//api := r.PathPrefix("/api/").Subrouter()
-	//api.HandleFunc("/sources", nil).Methods("GET")
+
 	r.PathPrefix("/js").Handler(http.FileServer(http.Dir("dist/")))
 	r.PathPrefix("/css").Handler(http.FileServer(http.Dir("dist/")))
 	r.Handle("favicon.ico", http.FileServer(http.Dir("dist/")))
