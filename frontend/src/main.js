@@ -8,6 +8,7 @@ import Login from "@/components/Login";
 import Dashboard from "@/components/Dashboard";
 import SourcesPage from "@/components/SourcesPage";
 import store from "@/services/store";
+import DataPage from "@/components/DataPage";
 
 Vue.config.productionTip = false
 
@@ -24,7 +25,9 @@ const router = new VueRouter({
   routes: [
     { path: '/', component: Login },
     { path: '/dashboard', component: Dashboard/*, meta: { requiresAuth: true }*/},
-    { path: '/sources', component: SourcesPage }
+    { path: '/sources', component: SourcesPage },
+    { path: '/data', component: DataPage },
+    { path: '/data/:source_id', component: DataPage }
   ]
 });
 
