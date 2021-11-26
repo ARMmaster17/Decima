@@ -42,5 +42,5 @@ func (suite *APIExtraTestSuite) TestGetSourcesListReturnsSingleTestSource() {
 	require.NoError(suite.T(), err)
 	suite.router.ServeHTTP(suite.recorder, req)
 	assert.Equal(suite.T(), 200, suite.recorder.Code)
-	assert.Equal(suite.T(), "[{\"ID\":0,\"CreatedAt\":\"0001-01-01T00:00:00Z\",\"UpdatedAt\":\"0001-01-01T00:00:00Z\",\"DeletedAt\":null,\"DummyVar\":0}]", suite.recorder.Body.String())
+	assert.Equal(suite.T(), "[{\"ID\":0,\"CreatedAt\":\"0001-01-01T00:00:00Z\",\"UpdatedAt\":\"0001-01-01T00:00:00Z\",\"DeletedAt\":null,\"Enabled\":false,\"Name\":\"\",\"UrlName\":\"\",\"DummyVar\":0}]", suite.recorder.Body.String())
 }
