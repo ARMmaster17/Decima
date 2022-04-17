@@ -1,33 +1,23 @@
 import {QueryClient, QueryClientProvider, useQuery} from "react-query";
 import { ReactQueryDevtools } from 'react-query-devtools'
+import { Outlet, Link } from "react-router-dom";
 
 const queryClient = new QueryClient();
 
 function App() {
-    async function fetchData() {
-        const response = await fetch('/hello');
-        return response.json();
-    }
-
-    function Greeting() {
-        const {data, status} = useQuery('greeting', fetchData);
-        if (status === 'loading') {
-            return <div>Loading...</div>;
-        }
-
-        if (status === 'error') {
-            return <div>Error!</div>;
-        }
-
-        return (
-            <h1>{data.greeting}</h1>
-        )
-    }
 
     return (
         <QueryClientProvider client={queryClient}>
             <div>
-                <Greeting />
+                <nav style={{
+                    borderBottom: "solid 1px",
+                    paddingBottom: "1rem",
+                    }}
+                >
+                    <Link to="/register">Register</Link> |{' '}
+                    <Link to="/login">Login</Link>
+                </nav>
+                <Outlet />
             </div>
         </QueryClientProvider>
     )
