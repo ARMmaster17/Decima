@@ -8,6 +8,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+/**
+ * FIXME: Remove this temporary class once there are authenticated resources that can be used instead.
+ */
 @Path("/api/protected")
 public class ProtectedResource {
     @GET

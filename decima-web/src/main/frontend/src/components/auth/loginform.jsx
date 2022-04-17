@@ -1,7 +1,9 @@
 import {Component} from "react";
-import { useNavigate } from "react-router-dom";
+import "./loginform.scss";
+import {Button, TextField} from "@material-ui/core";
 
 export default class LoginForm extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -36,7 +38,7 @@ export default class LoginForm extends Component {
             this.props.navigate("/greeting");
         }).catch(error => {
             this.setState({
-                error: error.message
+                error: "Wrong username/password"
             });
         });
     }
@@ -46,15 +48,13 @@ export default class LoginForm extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <h2>Login</h2>
                     <div className="form-group">
-                        <label htmlFor="username">Username</label>
-                        <input type="text" className="form-control" id="username" name="username" value={this.state.username} onChange={this.handleChange} />
+                        <TextField id="username" variant={"outlined"} label="Username" name="username" value={this.state.username} onChange={this.handleChange} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" id="password" name="password" value={this.state.password} onChange={this.handleChange} />
+                        <TextField id="password" variant={"outlined"} name="password" label="Password" type="password" value={this.state.password} onChange={this.handleChange} />
                     </div>
                     <div className="form-group">
-                        <button type="submit" className="btn btn-primary">Login</button>
+                        <Button type="submit" variant={"contained"} color={"primary"}>Login</Button>
                     </div>
                     {this.state.error && <div className="form-group">
                         <div className="alert alert-danger" role="alert">
